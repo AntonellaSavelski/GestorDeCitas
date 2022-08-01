@@ -5,11 +5,6 @@ import { Container } from 'react-bootstrap';
 import './index.css';
 import Cards from './elements/Card';
 
-const [mascota, setMascota] = useState("");
-const [dueño, setDueño] = useState("");
-const [fecha, setFecha] = useState("");
-const [hora, setHora] = useState("");
-const [sintomas, setSintomas] = useState("");
 
 function App() {
   return(
@@ -25,8 +20,7 @@ function App() {
             <div className="col-md-3">
               <h1>ADMINISTRA TUS CITAS</h1>
               <Cards
-
-              
+            
               />
               
 
