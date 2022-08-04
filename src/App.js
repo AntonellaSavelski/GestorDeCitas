@@ -15,7 +15,10 @@ function App() {
             <div className="col-md-3"></div>
             <div className="col-md-3">
             <h1>CREAR MI CITA</h1>
-            <Forms/>
+            <Forms
+            
+
+            />
             </div>
             <div className="col-md-3">
               <h1>ADMINISTRA TUS CITAS</h1>
