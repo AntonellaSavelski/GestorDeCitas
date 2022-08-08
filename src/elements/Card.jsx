@@ -1,17 +1,25 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from 'react-bootstrap/Button';
 
+export default function Cards({listaCitas, setListaCitas, ...props}) {
 
-const Cards = ( props ) => (
-
-        <div class="card">
-            <p>Mascota:{props.mascota}</p>
-            <p>Dueno: {props.dueño}</p>
-            <p>Fecha: {props.fecha}</p>
-            <p>Hora: {props.hora}</p>
-            <p>Sintomas:{props.sintomas}</p>
-            <Button variant="outline-dark">ELIMINAR</Button>
+    const Eliminar = (i) =>{
+        const citaABorrar = [...listaCitas];
+        citaABorrar.splice(i, 1)
+        setListaCitas(citaABorrar)
+    }
+    return (
+        <div className='mb-2'>
+            <div className="card">
+                <p><b>Mascota: </b>{props.mascota}</p>
+                <p><b>Dueno: </b>{props.dueno}</p>
+                <p><b>Fecha: </b>{props.fecha}</p>
+                <p><b>Hora: </b>{props.hora}</p>
+                <p><b>Sintomas: </b>{props.sintomas}</p>
+                <Button variant="outline-dark" onClick={Eliminar}>ELIMINAR</Button>
+            </div>
         </div>
-)
 
-export default Cards;
+    )
+}
+

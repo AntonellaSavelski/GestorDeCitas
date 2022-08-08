@@ -2,43 +2,55 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import React, { useState } from "react";
-import { NuevaCita } from './ListaCitas';
+import { Alert } from 'react-bootstrap';
 
-export default function Forms() {
+export default function Forms({ setListaCitas }) {
 
-    let [mascota, setMascota] = useState("");
-    let [dueno, setDueno] = useState("");
-    let [fecha, setFecha] = useState("");
-    let [hora, setHora] = useState("");
-    let [sintomas, setSintomas] = useState("");
+    const [mascota, setMascota] = useState("");
+    const [dueno, setDueno] = useState("");
+    const [fecha, setFecha] = useState("");
+    const [hora, setHora] = useState("");
+    const [sintomas, setSintomas] = useState("")
 
-    function Enviar() {
-        NuevaCita(mascota, dueno, fecha, hora, sintomas);
-        mascota = useState("");
-        dueno = useState("");
-        fecha = useState("");
-        hora = useState("");
-        sintomas = useState("");
+    const Enviar = (e) => {
+        if (!mascota || !dueno || !fecha || !hora || !sintomas) {
+            console.log("Ingresar todos los datos")
+        } else {
+            e.preventDefault();
+            setListaCitas(prev => [...prev, {
+                mascota,
+                dueno,
+                fecha,
+                hora,
+                sintomas
+            }])
+            setMascota("");
+            setDueno("");
+            setFecha("");
+            setHora("");
+            setSintomas("");
+        }
+       
     }
 
     return (
         <Form>
-            <Form.Label class="label">Nombre Mascota</Form.Label>
-            <Form.Control type="text" placeholder="Nombre Mascota" value={mascota} onChange={text => setMascota({ ...mascota, mascota: text })} />
+            <Form.Label className="label">Nombre Mascota</Form.Label>
+            <Form.Control type="text" placeholder="Nombre Mascota" required name="mascota" value={mascota} onChange={e => setMascota(e.target.value)} />
+        
+            <Form.Label className="label margen">Nombre Dueño</Form.Label>
+            <Form.Control type="text" placeholder="Nombre dueño de la mascota" required name="dueno" value={dueno} onChange={e => setDueno(e.target.value)} />
 
-            <Form.Label class="label margen">Nombre Dueño</Form.Label>
-            <Form.Control type="text" placeholder="Nombre dueño de la mascota" value={dueno} onChange={text => setDueno({ ...dueno, dueno: text })} />
+            <Form.Label className="label margen">Fecha</Form.Label>
+            <Form.Control type="date" name="fecha" required value={fecha} onChange={e => setFecha(e.target.value)} />
 
-            <Form.Label class="label margen">Fecha</Form.Label>
-            <Form.Control type="date" value={fecha} onChange={date => setFecha({ ...fecha, fecha: date })} />
+            <Form.Label className="label margen">Hora</Form.Label>
+            <Form.Control type="time" name="hora" required value={hora} onChange={e => setHora(e.target.value)} />
 
-            <Form.Label class="label margen">Hora</Form.Label>
-            <Form.Control type="time" value={hora} onChange={time => setHora({ ...hora, hora: time })} />
+            <Form.Label className="label margen">Sintomas</Form.Label>
+            <Form.Control type="text" name="sintomas" required value={sintomas} onChange={e => setSintomas(e.target.value)} />
 
-            <Form.Label class="label margen">Sintomas</Form.Label>
-            <Form.Control type="text" value={sintomas} onChange={text => setSintomas({ ...sintomas, sintomas: text })} />
-
-            <div className="d-grid pt-4">
+            <div className="d-grid pt-4 boton">
                 <Button variant="primary" type="submit" size="lg" onClick={(Enviar)} >
                     AGREGAR CITA
                 </Button>

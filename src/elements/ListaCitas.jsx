@@ -1,14 +1,16 @@
 import React from "react";
+import Cards from "./Card";
 
-const listaCitas=[];
-export function NuevaCita(props) {
-    const cita={
-        mascota: props.mascota,
-        dueno: props.dueno,
-        fecha: props.fecha,
-        hora: props.hora,
-        sintomas: props.sintomas
-    }
-    listaCitas.push(cita);
-    console.log(cita)
+export function ListadoCitas({listaCitas, setListaCitas}) {
+    return (
+        listaCitas.map((cita, i) => 
+        <Cards
+        listaCitas={listaCitas}
+        setListaCitas={setListaCitas}
+            {...cita}
+
+            key={i}
+         /> )
+     )
+        
 };
