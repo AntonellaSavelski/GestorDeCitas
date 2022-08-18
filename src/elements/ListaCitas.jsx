@@ -5,6 +5,7 @@ export function ListadoCitas({listaCitas, setListaCitas}) {
     return (
         listaCitas.map((cita, i) => 
         <Cards
+        i={i}
         listaCitas={listaCitas}
         setListaCitas={setListaCitas}
             {...cita}

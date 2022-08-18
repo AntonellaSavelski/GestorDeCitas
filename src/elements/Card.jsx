@@ -16,7 +16,7 @@ export default function Cards({listaCitas, setListaCitas, ...props}) {
                 <p><b>Fecha: </b>{props.fecha}</p>
                 <p><b>Hora: </b>{props.hora}</p>
                 <p><b>Sintomas: </b>{props.sintomas}</p>
-                <Button variant="outline-dark" onClick={Eliminar}>ELIMINAR</Button>
+                <Button variant="outline-dark" onClick={() => Eliminar(props.i)}>ELIMINAR</Button>
             </div>
         </div>
 
